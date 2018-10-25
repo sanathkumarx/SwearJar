@@ -1,0 +1,46 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "swear jar",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "emptyMyJarIntent",
+          "samples": [
+            "clear my jar",
+            "empty my jar"
+          ]
+        },
+        {
+          "name": "addCoinIntent",
+          "samples": [
+            "add coins to jar"
+          ]
+        },
+        {
+          "name": "whatsInMyJarIntent",
+          "samples": [
+            "what is in my jar"
+          ]
+        },
+        {
+          "name": "removeCoinsIntent",
+          "samples": [
+            "remove coin from my jar"
+          ]
+        }
+      ]
+    }
+  }
+}

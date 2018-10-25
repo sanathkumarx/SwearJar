@@ -1,0 +1,56 @@
+{
+  "manifest": {
+    "publishingInformation": {
+      "locales": {
+        "en-IN": {
+          "summary": "Turn you alexa into a vitual swear jar",
+          "examplePhrases": [
+            "Alexa open swear jar",
+            "Alexa add coins to my jar",
+            "Alexa remove coins from my jar"
+          ],
+          "keywords": [
+            "swear",
+            "jar",
+            "accountable",
+            "curse",
+            "words",
+            "bad",
+            "word",
+            "container",
+            "bowl",
+            "language",
+            "cussing",
+            "cursing",
+            "cuss",
+            "dirty",
+            "filthy",
+            "foul",
+            "naughty",
+            "profanity",
+            "swearing",
+            "swearword",
+            "vulgar"
+          ],
+          "name": "Swear Jar",
+          "smallIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/ff38/ac41386314574a8da232c0b44707c0a6/APP_ICON?versionId=0_ywxBmE7QVwsIA5Do5AqEVNEzVfNUhH&AWSAccessKeyId=AKIAJFEYRBGIHK2BBYKA&Expires=1540577153&Signature=XdRAFWMymc1aOTQ6SW5gEl5uYJc%3D",
+          "description": "Using this skill you will be able to turn your Alexa into a virtual swear jar. Let Alexa know every time you say a swear word and Alexa will add coins to your jar. Try to keep your jar as empty as possible. Set yourself a monthly targets and hold yourself accountable.",
+          "largeIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/88b9/a2725367f5074e798242f5c7a5b34fc8/APP_ICON_LARGE?versionId=TvfjLS9mo57f9q8ilm3n9KMG1e5h0ucQ&AWSAccessKeyId=AKIAJFEYRBGIHK2BBYKA&Expires=1540577154&Signature=g6%2FVWPVryDEF7g4xEu%2BpOfZ7aPc%3D"
+        }
+      },
+      "isAvailableWorldwide": true,
+      "testingInstructions": "Sample Testing Instructions.",
+      "category": "SELF_IMPROVEMENT",
+      "distributionCountries": []
+    },
+    "apis": {
+      "custom": {
+        "endpoint": {
+          "sourceDir": ".\\lambda\\us-east-1_Swear_Jar_Lambda"
+        },
+        "interfaces": []
+      }
+    },
+    "manifestVersion": "1.0"
+  }
+}

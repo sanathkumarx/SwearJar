@@ -1,0 +1,40 @@
+{
+  "deploy_settings": {
+    "default": {
+      "skill_id": "amzn1.ask.skill.9ba9d58f-6cfe-4dd0-8918-e31f7c2d20bf",
+      "was_cloned": true,
+      "resources": {
+        "manifest": {
+          "eTag": "65826a6d8af7cc80d642008c65a57643"
+        },
+        "interactionModel": {
+          "en-IN": {
+            "eTag": "6a46de3a4a468f3948b95e458cf4f8f6"
+          }
+        },
+        "lambda": [
+          {
+            "arn": "arn:aws:lambda:us-east-1:683523002438:function:Swear_Jar_Lambda",
+            "awsRegion": "us-east-1",
+            "functionName": "Swear_Jar_Lambda",
+            "alexaUsage": [
+              "custom/default"
+            ],
+            "revisionId": "4399cc30-b77b-4b3c-9eab-c7726facc958"
+          }
+        ]
+      },
+      "merge": {
+        "manifest": {
+          "apis": {
+            "custom": {
+              "endpoint": {
+                "uri": "arn:aws:lambda:us-east-1:683523002438:function:Swear_Jar_Lambda"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
