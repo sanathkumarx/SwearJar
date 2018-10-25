@@ -28,12 +28,17 @@ const addCoinIntent = {
     let speechText = ``;
     const attributesManager = handlerInpt.attributesManager;
     const attributes = await attributesManager.getPersistentAttributes() || {};
-
+    console.log('REACHED 1')
     if (Object.keys(attributes).length === 0){
+
       attributes.noOfcoins = 1;
+      attributesManager.setPersistentAttributes(attributes);
+      await attributesManager.savePersistentAttributes();
       speechText = `You have ${attributes.noOfcoins} coin in your jar`;
     } else{
       attributes.noOfcoins += 1;
+      attributesManager.setPersistentAttributes(attributes);
+      await attributesManager.savePersistentAttributes();
       speechText = `You have ${attributes.noOfcoins} in your jar`;
     }
     
@@ -160,6 +165,6 @@ exports.handler = skillBuilder
     SessionEndedRequestHandler
   )
   .addErrorHandlers(ErrorHandler)
-  .withTableName('Swear jar')
+  .withTableName('Swear_jar')
   .withAutoCreateTable(true)
   .lambda();
