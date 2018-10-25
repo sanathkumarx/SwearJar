@@ -13,7 +13,7 @@ const LaunchRequestHandler = {
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(speechText)
-      .withSimpleCard('Swear Jar', speechText)
+      .withSimpleCard('Sw**r Jar', speechText)
       .getResponse();
   },
 };
@@ -28,7 +28,6 @@ const addCoinIntent = {
     let speechText = ``;
     const attributesManager = handlerInput.attributesManager;
     const attributes = await attributesManager.getPersistentAttributes() || {};
-    console.log('REACHED 1')
     if (Object.keys(attributes).length === 0){
 
       attributes.noOfcoins = 1;
@@ -39,12 +38,13 @@ const addCoinIntent = {
       attributes.noOfcoins += 1;
       attributesManager.setPersistentAttributes(attributes);
       await attributesManager.savePersistentAttributes();
-      speechText = `You have ${attributes.noOfcoins} in your jar`;
+      speechText = `You now have ${attributes.noOfcoins} coins in your jar`;
     }
-    
+    const reprompttext = "do you want to know how many coins are there in your jar?"
     return handlerInput.responseBuilder
       .speak(speechText)
-      .withSimpleCard('Hello World', speechText)
+      .reprompt(reprompttext)
+      .withSimpleCard('Sw**r Jar', speechText)
       .getResponse();
   },
 };
@@ -52,14 +52,31 @@ const addCoinIntent = {
 const emptyMyJarIntent = {
   canHandle(handlerInput) {
     return handlerInput.requestEnvelope.request.type === 'IntentRequest'
-      && handlerInput.requestEnvelope.request.intent.name === 'HelloWorldIntent';
+      && handlerInput.requestEnvelope.request.intent.name === 'emptyMyJarIntent';
   },
-  handle(handlerInput) {
-    const speechText = 'Hello World!';
-
+  async handle(handlerInput) {
+    let speechText = '';
+    const attributesManager = handlerInput.attributesManager;
+    const attributes = await attributesManager.getPersistentAttributes() || {};
+    const flag =0;
+    if (Object.keys(attributes).length === 0){
+      attributes.noOfcoins = 0;
+      attributesManager.setPersistentAttributes(attributes);
+      await attributesManager.savePersistentAttributes();
+      speechText = 'I can\'t empty an empty jar can I?';
+    } else{
+      if(attributes.noOfcoins == 0){flag =1;}
+      attributes.noOfcoins = 0;
+      attributesManager.setPersistentAttributes(attributes);
+      await attributesManager.savePersistentAttributes();
+      if(flag ==1){speechText = 'I can\'t empty an empty jar can I?';}
+      else{speechText = 'I have emptied your jar';}
+    }
+    const reprompttext = "do you want to know how many coins are there in your jar? hint: It's zero"
     return handlerInput.responseBuilder
       .speak(speechText)
-      .withSimpleCard('Hello World', speechText)
+      .withSimpleCard('Sw**r Jar', speechText)
+      .reprompt(reprompttext)
       .getResponse();
   },
 };
@@ -67,14 +84,25 @@ const emptyMyJarIntent = {
 const whatsInMyJarIntent = {
   canHandle(handlerInput) {
     return handlerInput.requestEnvelope.request.type === 'IntentRequest'
-      && handlerInput.requestEnvelope.request.intent.name === 'HelloWorldIntent';
+      && handlerInput.requestEnvelope.request.intent.name === 'whatsInMyJarIntent';
   },
   handle(handlerInput) {
-    const speechText = 'Hello World!';
-
+    let speechText = ``;
+    const attributesManager = handlerInput.attributesManager;
+    const attributes = await attributesManager.getPersistentAttributes() || {};
+    if (Object.keys(attributes).length === 0){
+      attributes.noOfcoins = 0;
+      attributesManager.setPersistentAttributes(attributes);
+      await attributesManager.savePersistentAttributes();
+      speechText = 'Your jar is  empty';
+    } else{
+      speechText = `You have ${attributes.noOfcoins} in your jarI have emptied your jar`;
+    }
+    const reprompttext = "do you want to add coins to your jar?"
     return handlerInput.responseBuilder
       .speak(speechText)
-      .withSimpleCard('Hello World', speechText)
+      .withSimpleCard('Sw**r Jar', speechText)
+      .reprompt(reprompttext)
       .getResponse();
   },
 };
@@ -82,14 +110,29 @@ const whatsInMyJarIntent = {
 const removeCoinsIntent = {
   canHandle(handlerInput) {
     return handlerInput.requestEnvelope.request.type === 'IntentRequest'
-      && handlerInput.requestEnvelope.request.intent.name === 'HelloWorldIntent';
+      && handlerInput.requestEnvelope.request.intent.name === 'removeCoinsIntent';
   },
   handle(handlerInput) {
-    const speechText = 'Hello World!';
+    let speechText = ``;
+    const attributesManager = handlerInput.attributesManager;
+    const attributes = await attributesManager.getPersistentAttributes() || {};
+    if (Object.keys(attributes).length === 0){
 
+      attributes.noOfcoins = 0;
+      attributesManager.setPersistentAttributes(attributes);
+      await attributesManager.savePersistentAttributes();
+      speechText = 'I can\'t remove coins from an empty jar can I?';
+    } else{
+      attributes.noOfcoins -= 1;
+      attributesManager.setPersistentAttributes(attributes);
+      await attributesManager.savePersistentAttributes();
+      speechText = `You now have ${attributes.noOfcoins} coins in your jar`;
+    }
+    const reprompttext = "do you want to know add coins to your jar?"
     return handlerInput.responseBuilder
       .speak(speechText)
-      .withSimpleCard('Hello World', speechText)
+      .reprompt(reprompttext)
+      .withSimpleCard('Sw**r Jar', speechText)
       .getResponse();
   },
 };
