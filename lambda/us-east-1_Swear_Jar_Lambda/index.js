@@ -26,7 +26,7 @@ const addCoinIntent = {
   
   async handle(handlerInput) {
     let speechText = ``;
-    const attributesManager = handlerInpt.attributesManager;
+    const attributesManager = handlerInput.attributesManager;
     const attributes = await attributesManager.getPersistentAttributes() || {};
     console.log('REACHED 1')
     if (Object.keys(attributes).length === 0){
