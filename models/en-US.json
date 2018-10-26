@@ -1,0 +1,633 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "swear jar",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "emptyMyJarIntent",
+                    "slots": [
+                        {
+                            "name": "empt_remove",
+                            "type": "EMPT_REMOVE"
+                        }
+                    ],
+                    "samples": [
+                        "{empt_remove}",
+                        "{empt_remove} on my jar",
+                        "{empt_remove} my jar"
+                    ]
+                },
+                {
+                    "name": "addCoinIntent",
+                    "slots": [
+                        {
+                            "name": "noCoins",
+                            "type": "AMAZON.NUMBER"
+                        },
+                        {
+                            "name": "add_pre_statement",
+                            "type": "ADD_PRE_STATEMENT"
+                        },
+                        {
+                            "name": "add_post_statement",
+                            "type": "ADD_POST_STATEMENT"
+                        }
+                    ],
+                    "samples": [
+                        "{add_pre_statement} {noCoins} {add_post_statement}"
+                    ]
+                },
+                {
+                    "name": "whatsInMyJarIntent",
+                    "slots": [],
+                    "samples": [
+                        "what is the count of my jar",
+                        "what's the count of my jar",
+                        "how many coins do i have in my jar",
+                        "how many coins do i have",
+                        "what's in my jar",
+                        "what is in my jar"
+                    ]
+                },
+                {
+                    "name": "removeCoinsIntent",
+                    "slots": [
+                        {
+                            "name": "noCoins",
+                            "type": "AMAZON.NUMBER"
+                        },
+                        {
+                            "name": "rmv_pre_statement",
+                            "type": "RMV_PRE_STATEMENT"
+                        },
+                        {
+                            "name": "rmv_pst_statement",
+                            "type": "RMV_POST_STATEMENT"
+                        }
+                    ],
+                    "samples": [
+                        "{rmv_pre_statement} {noCoins} {rmv_pst_statement}"
+                    ]
+                }
+            ],
+            "types": [
+                {
+                    "name": "EMPT_REMOVE",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "remove all coins from"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "remove all coin from"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "neglect",
+                                "synonyms": [
+                                    "neglected"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "forget",
+                                "synonyms": [
+                                    "for get",
+                                    "for got",
+                                    "forgot",
+                                    "forgotten"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "eliminate",
+                                "synonyms": [
+                                    "eel iminated",
+                                    "eel iminate",
+                                    "ell iminated",
+                                    "ell iminate",
+                                    "el iminated",
+                                    "el iminate",
+                                    "eliminated"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "outcast",
+                                "synonyms": [
+                                    "out caste",
+                                    "out cast"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "desert",
+                                "synonyms": [
+                                    "de serted",
+                                    "de sert",
+                                    "deserted"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "give up",
+                                "synonyms": [
+                                    "geiven up"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "cast away",
+                                "synonyms": [
+                                    "caste aside",
+                                    "caste away",
+                                    "cast aside"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "drained",
+                                "synonyms": [
+                                    "drain"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "vacuous"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "waste",
+                                "synonyms": [
+                                    "waste ed",
+                                    "wasted"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "exhausted",
+                                "synonyms": [
+                                    "exausted",
+                                    "exaust",
+                                    "exhaust",
+                                    "x hausted",
+                                    "ex hausted"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "evacuate",
+                                "synonyms": [
+                                    "e vacuate",
+                                    "e vacuated",
+                                    "evacuated"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "deplete",
+                                "synonyms": [
+                                    "de pleted",
+                                    "depleted",
+                                    "depl ete",
+                                    "de plete"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "deflate",
+                                "synonyms": [
+                                    "def lated",
+                                    "de flated",
+                                    "deflated",
+                                    "delf ate",
+                                    "def late",
+                                    "de flate"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "abandon",
+                                "synonyms": [
+                                    "abandoned"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "vacant",
+                                "synonyms": [
+                                    "vacated",
+                                    "vacate"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "unoccupy",
+                                "synonyms": [
+                                    "un occupy"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "hollow",
+                                "synonyms": [
+                                    "hollowed"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "devoid",
+                                "synonyms": [
+                                    "void"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "desolate"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "unfill",
+                                "synonyms": [
+                                    "un fil",
+                                    "unfil",
+                                    "un fill"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "dump"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "clear"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "empty"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ADD_PRE_STATEMENT",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "put"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "increment"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "increase"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "add"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "RMV_POST_STATEMENT",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "coin from my jar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "coin from jar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "coins from jar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "coins from my jar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "from jar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "from my jar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "coin from my swear jar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "coin from swear jar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "coin"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "coins from swear jar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "coins from my swear jar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "coins"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "from swear jar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "from my swear jar"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ADD_POST_STATEMENT",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "coin in my swear jar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "coin to my swear jar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "coin into my swear jar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "coin in swear jar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "coin to swear jar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "coin into swear jar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "coins to swear jar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "coins to my swear jar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "coins in swear jar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "coins in my swear jar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "coins into swear jar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "coins into my swear jar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "in swear jar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "in my swear jar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "into swear jar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "into my swear jar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "to my swear jar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "to swear jar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "coin in my jar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "coin to my jar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "coin into my jar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "coin in jar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "coin to jar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "coin into jar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "coin"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "coins to jar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "coins to my jar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "coins in jar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "coins in my jar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "coins into jar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "coins into my jar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "coins"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "in jar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "in my jar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "into jar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "into my jar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "to my jar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "to jar"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "RMV_PRE_STATEMENT",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "pull"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "decrease"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "withdraw"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "remove"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

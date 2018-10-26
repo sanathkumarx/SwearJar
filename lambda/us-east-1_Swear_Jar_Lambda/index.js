@@ -28,8 +28,9 @@ const addCoinIntent = {
     let speechText = ``;
     const attributesManager = handlerInput.attributesManager;
     const attributes = await attributesManager.getPersistentAttributes() || {};
-    const noCoins = handlerInput.requestEnvelope.attributes.slots
+    const Coins = handlerInput.requestEnvelope.request.intent.slots.noCoins.value;
     var flagcoin = 0;
+    const noCoins = parseInt(Coins, 10);
     if(noCoins != null ){flagcoin = 1;}
     if (Object.keys(attributes).length === 0){
       attributes.noOfcoins = 1;
@@ -37,7 +38,7 @@ const addCoinIntent = {
       await attributesManager.savePersistentAttributes();
       speechText = `You have ${attributes.noOfcoins} coin in your jar`;
     } else{
-      if(flag == 1){attributes.noOfcoins += noCoins;}
+      if(flagcoin == 1){attributes.noOfcoins += noCoins;}
       else{attributes.noOfcoins += 1;}
       attributesManager.setPersistentAttributes(attributes);
       await attributesManager.savePersistentAttributes();
@@ -119,16 +120,21 @@ const removeCoinsIntent = {
     let speechText = ``;
     const attributesManager = handlerInput.attributesManager;
     const attributes = await attributesManager.getPersistentAttributes() || {};
+    const Coins = handlerInput.requestEnvelope.request.intent.slots.noCoins.value;
+    var flagcoin = 0;
+    const noCoins = parseInt(Coins, 10);
+    if(noCoins != null ){flagcoin = 1;}
     var flag =0;
     if (Object.keys(attributes).length === 0){
-
       attributes.noOfcoins = 0;
       attributesManager.setPersistentAttributes(attributes);
       await attributesManager.savePersistentAttributes();
       speechText = 'I can\'t remove coins from an empty jar can I?';
     } else{
-      if(attributes.noOfcoins ==0){attributes.noOfcoins = 0; flag=1;}
+      if(attributes.noOfcoins <=0){attributes.noOfcoins = 0; flag=1;}
+      else if(flagcoin == 1){attributes.noOfcoins -= noCoins;}
       else{attributes.noOfcoins -= 1;}
+      if(attributes.noOfcoins < 0){attributes.noOfcoins =0;}
       attributesManager.setPersistentAttributes(attributes);
       await attributesManager.savePersistentAttributes();
       if(flag==1){speechText = `There are no coins in your jar for them to be removed`;}
