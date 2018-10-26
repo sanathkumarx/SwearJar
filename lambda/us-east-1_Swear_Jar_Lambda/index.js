@@ -29,8 +29,11 @@ const addCoinIntent = {
     const attributesManager = handlerInput.attributesManager;
     const attributes = await attributesManager.getPersistentAttributes() || {};
     const Coins = handlerInput.requestEnvelope.request.intent.slots.noCoins.value;
+    console.log('XXXXXXXXXXXXXX'+ Coins);
     var flagcoin = 0;
     const noCoins = parseInt(Coins, 10);
+    if (isNaN(noCoins)) noCoins = 1;
+    console.log('ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ'+ noCoins);
     if(noCoins != null ){flagcoin = 1;}
     if (Object.keys(attributes).length === 0){
       attributes.noOfcoins = 1;
