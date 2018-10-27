@@ -80,6 +80,14 @@
                     "samples": [
                         "{rmv_pre_statement} {noCoins} {rmv_pst_statement}"
                     ]
+                },
+                {
+                    "name": "AMAZON.YesIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NoIntent",
+                    "samples": []
                 }
             ],
             "types": [
@@ -628,6 +636,41 @@
                     ]
                 }
             ]
-        }
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "emptyMyJarIntent",
+                    "confirmationRequired": true,
+                    "prompts": {
+                        "confirmation": "Confirm.Intent.1221484451558"
+                    },
+                    "slots": [
+                        {
+                            "name": "empt_remove",
+                            "type": "EMPT_REMOVE",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        }
+                    ]
+                }
+            ]
+        },
+        "prompts": [
+            {
+                "id": "Confirm.Intent.1221484451558",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "do you really want to empty your jar?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "are you sure you want to empty your jar?"
+                    }
+                ]
+            }
+        ]
     }
 }
