@@ -46,6 +46,7 @@
                         }
                     ],
                     "samples": [
+                        "{add_pre_statement} {add_post_statement}",
                         "{add_pre_statement} {noCoins} {add_post_statement}"
                     ]
                 },
@@ -78,6 +79,7 @@
                         }
                     ],
                     "samples": [
+                        "{rmv_pre_statement} {rmv_pst_statement}",
                         "{rmv_pre_statement} {noCoins} {rmv_pst_statement}"
                     ]
                 },

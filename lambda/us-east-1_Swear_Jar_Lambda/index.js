@@ -14,7 +14,7 @@ const LaunchRequestHandler = {
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(speechText)
-      .withSimpleCard('swe*r j*r', speechText)
+      .withSimpleCard('Swe*r jar', speechText)
       .getResponse();
   },
 };
@@ -30,11 +30,9 @@ const addCoinIntent = {
     const attributesManager = handlerInput.attributesManager;
     const attributes = await attributesManager.getPersistentAttributes() || {};
     const Coins = handlerInput.requestEnvelope.request.intent.slots.noCoins.value;
-    console.log('XXXXXXXXXXXXXX'+ Coins);
     var flagcoin = 0;
     var noCoins = parseInt(Coins, 10);
     if (isNaN(noCoins) || noCoins == 0) noCoins = 1;
-    console.log('ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ'+ noCoins);
     if(noCoins != null ){flagcoin = 1;}
     if (Object.keys(attributes).length === 0){
       attributes.noOfcoins = 1;
@@ -50,7 +48,7 @@ const addCoinIntent = {
     }
     return handlerInput.responseBuilder
       .speak(speechText)
-      .withSimpleCard('swe*r j*r', speechText)
+      .withSimpleCard('Swe*r jar', speechText)
       .getResponse();
   },
 };
@@ -71,12 +69,12 @@ const whatsInMyJarIntent = {
       await attributesManager.savePersistentAttributes();
       speechText = 'Your jar is empty';
     } else{
-      speechText = `You have ${attributes.noOfcoins} coins in your jar .Do you want to add coins to your jar?`;
+      speechText = `You have ${attributes.noOfcoins} coins in your jar . What do you want me to do for you?`;
     }
     const reprompttext = "How can i help you?"
     return handlerInput.responseBuilder
       .speak(speechText)
-      .withSimpleCard('swe*r j*r', speechText)
+      .withSimpleCard('Swe*r jar', speechText)
       .reprompt(reprompttext)
       .getResponse();
   },
@@ -114,7 +112,7 @@ const removeCoinsIntent = {
     }
     return handlerInput.responseBuilder
       .speak(speechText)
-      .withSimpleCard('swe*r j*r', speechText)
+      .withSimpleCard('Swe*r jar', speechText)
       .getResponse();
   },
 };
@@ -125,30 +123,92 @@ const emptyMyJarIntent = {
       && handlerInput.requestEnvelope.request.intent.name === 'emptyMyJarIntent';
   },
   async handle(handlerInput) {
-    let speechText = '';
-    const attributesManager = handlerInput.attributesManager;
-    const attributes = await attributesManager.getPersistentAttributes() || {};
-    var flag =0;
-    if (Object.keys(attributes).length === 0){
-      attributes.noOfcoins = 0;
-      attributesManager.setPersistentAttributes(attributes);
-      await attributesManager.savePersistentAttributes();
-      speechText = 'I can\'t empty an empty jar can I?';
-    } else{
-      if(attributes.noOfcoins == 0){flag =1;}
-      attributes.noOfcoins = 0;
-      attributesManager.setPersistentAttributes(attributes);
-      await attributesManager.savePersistentAttributes();
-      if(flag ==1){speechText = 'I can\'t empty an empty jar can I?';}
-      else{speechText = 'I have emptied your jar';}
-    }
+    const speechText = 'Are you sure you want to empty your jar? Say Yes. or NO.';
+    endFlag =1;
     return handlerInput.responseBuilder
-      .speak(speechText)
-      .withSimpleCard('swe*r j*r', speechText)
-      .getResponse();
+    .speak(speechText)
+    .reprompt(speechText)
+    .withSimpleCard('Swe*r jar', speechText)
+    .getResponse();
   },
 };
 
+const yesHandler = {
+
+  canHandle(handlerInput) {
+    const request = handlerInput.requestEnvelope.request;
+    return request.type === 'IntentRequest'
+      && request.intent.name === 'AMAZON.YesIntent';
+  },
+
+  handle(handlerInput) {
+    if(endFlag == 1){
+      var speechText = ``;
+      const attributesManager = handlerInput.attributesManager;
+      const attributes = await attributesManager.getPersistentAttributes() || {};
+      endFlag = 0;
+      var flag =0;
+      if (Object.keys(attributes).length === 0){
+        attributes.noOfcoins = 0;
+        attributesManager.setPersistentAttributes(attributes);
+        await attributesManager.savePersistentAttributes();
+        speechText = 'I can\'t empty an empty jar can I?';
+      } else{
+        if(attributes.noOfcoins == 0){flag =1;}
+        attributes.noOfcoins = 0;
+        attributesManager.setPersistentAttributes(attributes);
+        await attributesManager.savePersistentAttributes();
+        if(flag ==1){speechText = 'I can\'t empty an empty jar can I?';}
+        else{speechText = 'I have emptied your jar';}
+      }
+      return handlerInput.responseBuilder
+        .speak(speechText)
+        .withSimpleCard('Swe*r jar', speechText)
+        .getResponse();
+    }
+    else{
+      const speechText = `Sorry, an error occoured. Please try again`;
+      const repText = `How can i help you?`;
+      return handlerInput.responseBuilder
+      .speak(speechText)
+      .reprompt(repText)
+      .withSimpleCard('Swe*r jar', speechText)
+      .getResponse();
+    }
+  },
+};
+
+const noHandler = {
+
+  canHandle(handlerInput) {
+    const request = handlerInput.requestEnvelope.request;
+    return request.type === 'IntentRequest'
+      && request.intent.name === 'AMAZON.NoIntent';
+  },
+
+  handle(handlerInput) {
+    if(endFlag == 1){
+      const speechText = `Ok. How can i help you?`
+      const repText = ` How can i help you?`
+      endFlag = 0;
+      return handlerInput.responseBuilder
+        .speak(speechText)
+        .reprompt(repText)
+        .withSimpleCard('Swe*r jar', speechText)
+        .getResponse();
+
+    }
+    else{
+      const speechText = `Sorry, an error occoured. Please try again`;
+      const repText = `How can i help you?`;
+      return handlerInput.responseBuilder
+      .speak(speechText)
+      .reprompt(repText)
+      .withSimpleCard('Swe*r jar', speechText)
+      .getResponse();
+    }
+  },
+};
 
 const HelpIntentHandler = {
   canHandle(handlerInput) {
@@ -161,7 +221,7 @@ const HelpIntentHandler = {
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(speechText)
-      .withSimpleCard('Hello World', speechText)
+      .withSimpleCard('Swe*r jar', speechText)
       .getResponse();
   },
 };
@@ -177,10 +237,11 @@ const CancelAndStopIntentHandler = {
 
     return handlerInput.responseBuilder
       .speak(speechText)
-      .withSimpleCard('Hello World', speechText)
+      .withSimpleCard('Swe*r jar', speechText)
       .getResponse();
   },
 };
+
 
 const FallbackHandler = {
 
@@ -235,6 +296,8 @@ exports.handler = skillBuilder
     whatsInMyJarIntent,
     removeCoinsIntent,
     emptyMyJarIntent,
+    yesHandler,
+    noHandler,
     HelpIntentHandler,
     CancelAndStopIntentHandler,
     FallbackHandler,
@@ -244,3 +307,5 @@ exports.handler = skillBuilder
   .withTableName('Swear_jar')
   .withAutoCreateTable(true)
   .lambda();
+
+
